@@ -1,0 +1,22 @@
+@host = http://127.0.0.1:5000
+
+### Listar todas as tarefas
+GET {{host}}/todos
+Accept: application/json
+
+### Criar uma tarefa
+POST {{host}}/todos
+Content-Type: application/json
+
+{
+  "title": "Estudar orientação a objetos em Python"
+}
+
+### Alterar concluída/não concluída
+PATCH {{host}}/todos/1/toggle
+Accept: application/json
+
+### Excluir uma tarefa
+DELETE {{host}}/todos/2
+
+
