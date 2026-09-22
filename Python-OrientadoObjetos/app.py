@@ -19,6 +19,20 @@ class TodoAPI:
         self._configure_routes()
 
     def _configure_routes(self):
+        @self.app.get("/")
+        def home():
+            return jsonify(
+                {
+                    "message": "API Todo List funcionando!",
+                    "endpoints": {
+                        "GET /todos": "Lista todas as tarefas",
+                        "POST /todos": "Cria uma nova tarefa",
+                        "PATCH /todos/{id}/toggle": "Altera o status da tarefa",
+                        "DELETE /todos/{id}": "Exclui uma tarefa",
+                    },
+                }
+            ), 200
+
         @self.app.get("/todos")
         def list_todos():
             todos = self.service.list_all()
